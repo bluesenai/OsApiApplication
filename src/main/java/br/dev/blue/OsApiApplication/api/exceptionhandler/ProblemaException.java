@@ -1,13 +1,22 @@
 
 package br.dev.blue.OsApiApplication.api.exceptionhandler;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 public class ProblemaException {
    private Integer status;
-   private LocaDateTime dataHora;
+   private LocalDateTime dataHora;
    private String titulo;
+
+    public List<CampoProblema> getListaCamposProblema() {
+        return listaCamposProblema;
+    }
+
+    public void setListaCamposProblema(List<CampoProblema> listaCamposProblema) {
+        this.listaCamposProblema = listaCamposProblema;
+    }
 
    private List<CampoProblema> listaCamposProblema;
    
@@ -25,11 +34,11 @@ public class ProblemaException {
         this.status = status;
     }
 
-    public LocaDateTime getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(LocaDateTime dataHora) {
+    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
 
