@@ -32,7 +32,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
     problema.setTitulo("Um ou mais campos inválidos! Tente novamente.");
     problema.setDataHora(LocalDateTime.now());
     
-    List<ProblemaException.CampoProblema> camposComErro = new ArrayList<ProblemaException.CampoProblema>();
+    List<ProblemaException.CampoProblema> camposComErro = new ArrayList<>();
     
     for(ObjectError error : ex.getBindingResult().getAllErrors()) {
         String nomeCampo = ((FieldError) error).getField();
