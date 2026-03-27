@@ -1,11 +1,20 @@
 
 package br.dev.blue.OsApiApplication.api.controller;
 
+import br.dev.blue.OsApiApplication.domain.dto.AtualizaStatusDTO;
 import br.dev.blue.OsApiApplication.domain.model.OrdemServico;
+import br.dev.blue.OsApiApplication.domain.model.StatusOrdemServico;
 import br.dev.blue.OsApiApplication.domain.service.OrdemServicoService;
+import jakarta.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -24,5 +33,24 @@ public class OrdemServicoController {
         
         return ordemServicoService.criar(ordemServico);
     }
-    
+    @PutMapping("/atualiza-status/{ordemServicoID}")
+    public ResponseEntity<OrdemServico> atualizaStatus(
+    @PathVariable Long ordemServicoID,
+            @Valid @RequestBody AtualizaStatusDTO statusDTO) {
+        
+        Optional<OrdemServico> optOS = ordemServicoService.atualizaStatus(
+                  ordemServicoID,
+                  statusDTO.status());
+        
+        if (optOS.isPresent()) {
+            return ResponseEntity.ok(optOS.get());
+            
+        }else{
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @GetMapping("/clientes/{clienteId}/ordens-servico")
+       public List<OrdemServico> listarPorCliente(@PathVariable Long clienteId) {
+          return ordemServicoService.listarPorCliente(clienteId); 
+    }
 }

@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Record.java to edit this template
- */
+
 package br.dev.blue.OsApiApplication.domain.dto;
 
-/**
- *
- * @author sesi3dib
- */
-public record AtualizaStatusDTO() {
+import br.dev.blue.OsApiApplication.domain.model.StatusOrdemServico;
+import jakarta.validation.constraints.NotNull;
 
-}
+public record AtualizaStatusDTO(
+        @NotNull(message = "Status é obrigatório")
+        StatusOrdemServico status
+        ) {}
