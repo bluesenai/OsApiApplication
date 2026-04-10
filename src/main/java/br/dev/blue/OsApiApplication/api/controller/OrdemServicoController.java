@@ -3,7 +3,6 @@ package br.dev.blue.OsApiApplication.api.controller;
 
 import br.dev.blue.OsApiApplication.domain.dto.AtualizaStatusDTO;
 import br.dev.blue.OsApiApplication.domain.model.OrdemServico;
-import br.dev.blue.OsApiApplication.domain.model.StatusOrdemServico;
 import br.dev.blue.OsApiApplication.domain.service.OrdemServicoService;
 import jakarta.validation.Valid;
 import java.util.List;

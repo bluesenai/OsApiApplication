@@ -1,5 +1,6 @@
 package br.dev.blue.OsApiApplication.domain.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,20 +15,24 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(name = "Product ID", example = "1", required = true)
     private long id;
 
     @NotBlank
     @Size(max = 60)
+    @Schema(name = "Product name", example = "Product 1", required = false)
     private String nome;
 
     @NotBlank
     @Email
     @Size(max = 255)
+    @Schema(name = "Cliente email", example = "your@email.com", required = true)
     private String email;
 
     @NotBlank
     @Size(max = 20)
     @Column(name = "telefone")
+    @Schema(name = "Cliente fone", example = "00 0000-00000", required = true)
     private String fone;
 
     public Cliente() {
